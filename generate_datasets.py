@@ -1,6 +1,4 @@
 import pickle
-import numpy as np
-
 from decodanda import *
 
 # Generate behavior
@@ -22,10 +20,7 @@ session_VIS = generate_synthetic_data(n_neurons=200, n_trials=100,
                                       labelsA=labelsA, labelsB=labelsB)
 
 pickle.dump(session_VIS, open('./datasets/VISp.pck', 'wb'))
-dec = Decodanda(session_VIS, {'stimulus': [-1, 1], 'action': [-1, 1]}, verbose=True)
-visualize_PCA(dec, mean=True, names=['A>', 'A<', 'B>', 'B<'])
-dec.CCGP(plot=True)
-dec.decode(0.8, plot=True, non_semantic=True)
+
 
 # Generate motor
 session_MO = generate_synthetic_data(n_neurons=200, n_trials=100,
@@ -36,10 +31,7 @@ session_MO = generate_synthetic_data(n_neurons=200, n_trials=100,
                                      labelsA=labelsA, labelsB=labelsB)
 
 pickle.dump(session_MO, open('./datasets/MOp.pck', 'wb'))
-dec = Decodanda(session_MO, {'stimulus': [-1, 1], 'action': [-1, 1]}, verbose=True)
-visualize_PCA(dec, mean=True, names=['A>', 'A<', 'B>', 'B<'])
-dec.CCGP(plot=True)
-dec.decode(0.8, plot=True, non_semantic=True)
+
 
 # Generate HPC
 session_HPC = generate_synthetic_data(n_neurons=200, n_trials=100,
@@ -49,10 +41,6 @@ session_HPC = generate_synthetic_data(n_neurons=200, n_trials=100,
                                       rateB=0.3,
                                       labelsA=labelsA, labelsB=labelsB)
 
-dec = Decodanda(session_HPC, {'stimulus': [-1, 1], 'action': [-1, 1]}, verbose=True)
-visualize_PCA(dec, mean=True, names=['A>', 'A<', 'B>', 'B<'])
-dec.CCGP(plot=True)
-dec.decode(0.8, plot=True, non_semantic=True)
 pickle.dump(session_HPC, open('./datasets/HPC.pck', 'wb'))
 
 # Generate PFC
@@ -64,10 +52,4 @@ session_PFC = generate_synthetic_data(n_neurons=200, n_trials=100,
                                       rateB=0.5,
                                       labelsA=labelsA, labelsB=labelsB)
 
-dec = Decodanda(session_PFC, {'stimulus': [-1, 1], 'action': [-1, 1]}, verbose=True)
-visualize_PCA(dec, mean=True, names=['A>', 'A<', 'B>', 'B<'])
-dec.CCGP(plot=True)
-dec.decode(0.8, plot=True, non_semantic=True)
 pickle.dump(session_PFC, open('./datasets/PFC.pck', 'wb'))
-
-visualize_session(session_PFC)
